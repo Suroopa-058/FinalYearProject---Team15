@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+*.log
+
+# Local JSON "database" runtime files (seed files under data/db/seed are kept)
+/src/data/db/*.runtime.json

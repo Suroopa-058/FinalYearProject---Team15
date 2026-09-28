@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+venv/
+.venv/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Build files
+dist/
+build/
+
+# Python temporary files
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Editor and OS files
+.vscode/
+.DS_Store
+
+# ZIP archives
+*.zip
+
+# Local logs
+*.log
+
+# Large local ML models
+ml-service/local_models/

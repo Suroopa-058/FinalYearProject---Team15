@@ -1,0 +1,14 @@
+import { Router } from "express";
+import { asyncHandler } from "../utils/async-handler";
+import { requireAuth, requireRoles } from "../middleware/auth.middleware";
+import { validate } from "../middleware/validate.middleware";
+import { createUniversityScholarshipSchema } from "../validators/auth.schema";
+import * as controller from "../controllers/university.controller";
+export const universityRouter = Router();
+universityRouter.use("/university", requireAuth, requireRoles("university_staff"));
+universityRouter.post("/university/request-verification", asyncHandler(controller.requestVerification));
+universityRouter.get("/university/roster", asyncHandler(controller.roster));
+universityRouter.get("/university/scholarships", asyncHandler(controller.listScholarships));
+universityRouter.post("/university/scholarships", validate(createUniversityScholarshipSchema), asyncHandler(controller.createScholarship));
+universityRouter.patch("/university/scholarships/:id", asyncHandler(controller.updateScholarship));
+universityRouter.get("/university/applications", asyncHandler(controller.applications));
